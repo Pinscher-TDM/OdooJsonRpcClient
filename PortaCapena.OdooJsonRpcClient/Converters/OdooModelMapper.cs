@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -24,6 +24,8 @@ namespace PortaCapena.OdooJsonRpcClient.Converters
 
             switch (value.Type)
             {
+
+                
                 case JTokenType.Boolean when dotnetType != typeof(bool) && dotnetType != typeof(bool?):
                     return false;
 
@@ -171,6 +173,12 @@ namespace PortaCapena.OdooJsonRpcClient.Converters
         {
             switch (property.Value.PropertyValueType)
             {
+                case OdooValueTypeEnum.Properties:
+                    return "string";
+
+                case OdooValueTypeEnum.PropertiesDefinition:
+                    return "string";
+
                 case OdooValueTypeEnum.Binary:
                     return "string";
                 case OdooValueTypeEnum.Char:
